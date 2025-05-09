@@ -40,7 +40,7 @@
     }
 
     .preloader img {
-      width: 120px;
+      width: 240px;  /* Увеличиваем размер логотипа в два раза */
       height: auto;
       animation: fadeInOut 2s ease-in-out infinite;
     }
@@ -83,7 +83,7 @@
     /* Адаптация для мобильных устройств */
     @media (max-width: 768px) {
       .preloader img {
-        width: 100px;  /* Уменьшаем логотип для мобильных */
+        width: 200px;  /* Увеличиваем логотип для мобильных устройств */
       }
     }
   </style>
@@ -102,11 +102,14 @@
 
   <script>
     window.addEventListener('load', () => {
+      // Добавляем класс 'show' для показа прелоудера
       document.getElementById('preloader').classList.add('show');
+      
+      // Убираем прелоудер и показываем основной контент после 2.5 секунд
       setTimeout(() => {
         document.getElementById('preloader').classList.remove('show');
         document.getElementById('mainContent').classList.add('show');
-      }, 2500); // 2.5 секунды
+      }, 2500); // 2.5 секунды для плавного исчезновения
     });
   </script>
 
