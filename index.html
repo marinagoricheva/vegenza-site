@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VEGENZA</title>
   <style>
     * {
@@ -12,7 +13,9 @@
 
     html, body {
       height: 100%;
+      width: 100%;
       background-color: #EEEAE7;
+      overflow: hidden;
     }
 
     .preloader {
@@ -39,7 +42,7 @@
     .preloader img {
       width: 120px;
       height: auto;
-      animation: fadeInOut 2.5s ease-out forwards;
+      animation: fadeInOut 2s ease-in-out infinite;
     }
 
     @keyframes fadeInOut {
@@ -47,7 +50,11 @@
         opacity: 0;
         transform: scale(0.8);
       }
-      50% {
+      25% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      75% {
         opacity: 1;
         transform: scale(1);
       }
@@ -60,7 +67,7 @@
     .main-content {
       display: none;
       width: 100%;
-      height: 100vh;
+      height: 100%;
     }
 
     .main-content.show {
@@ -71,6 +78,13 @@
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    /* Адаптация для мобильных устройств */
+    @media (max-width: 768px) {
+      .preloader img {
+        width: 100px;  /* Уменьшаем логотип для мобильных */
+      }
     }
   </style>
 </head>
