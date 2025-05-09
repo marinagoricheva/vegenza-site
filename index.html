@@ -26,17 +26,35 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
       transition: opacity 1s ease, visibility 1s ease;
     }
 
-    .preloader.hide {
-      opacity: 0;
-      visibility: hidden;
+    .preloader.show {
+      opacity: 1;
+      visibility: visible;
     }
 
     .preloader img {
       width: 120px;
       height: auto;
+      animation: fadeInOut 2.5s ease-out forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
     }
 
     .main-content {
@@ -58,20 +76,23 @@
 </head>
 <body>
 
+  <!-- Прелоудер с логотипом -->
   <div class="preloader" id="preloader">
     <img src="https://i.taplink.st/p/0/5/4/6/66548808.svg?0" alt="VEGENZA Logo">
   </div>
 
+  <!-- Основной Taplink -->
   <div class="main-content" id="mainContent">
     <iframe src="https://taplink.cc/vegenza" allowfullscreen></iframe>
   </div>
 
   <script>
     window.addEventListener('load', () => {
+      document.getElementById('preloader').classList.add('show');
       setTimeout(() => {
-        document.getElementById('preloader').classList.add('hide');
+        document.getElementById('preloader').classList.remove('show');
         document.getElementById('mainContent').classList.add('show');
-      }, 2500);
+      }, 2500); // 2.5 секунды
     });
   </script>
 
